@@ -73,10 +73,8 @@ const QUERY_LAYERS = [
   "ch.sz.a082a.schutzbauten.schutzanlage",
   "ch.sz.a105a.sirenen",
   "ch.sz.awb.awb_beh_verb_gewaesserraum",
-  "ch.sz.a020a.kataster_belasteter_standorte_01",
-  "ch.sz.a020a.kataster_belasteter_standorte_pnt_01",
-  "ch.sz.a020a.kataster_belasteter_standorte_02",
-  "ch.sz.a020a.kataster_belasteter_standorte_pnt_02",
+  "ch.sz.a020a.kataster_belasteter_standorte",
+  "ch.sz.a020a.kataster_belasteter_standorte_pnt",
 ];
 
 const PARCEL_LAYER =
