@@ -10,7 +10,7 @@ const specialFormTypes = {
     Bezirksstrassen: "district",
     Kantonsstrassen: "canton",
   },
-  "plangenehmigungsgesuch-v4": {
+  "plangenehmigungsgesuch-v5": {
     ASTRA: "astra",
     "BAV (Bahnanlagen)": "bavb",
     "BAV (Schffsanlagen)": "bavs",
@@ -80,7 +80,7 @@ export default class InstancesNewController extends Controller {
     if (
       [
         "projektgenehmigungsgesuch-gemass-ss15-strag-v4",
-        "plangenehmigungsgesuch-v4",
+        "plangenehmigungsgesuch-v5",
       ].includes(this.get("model.form.name")) &&
       !this.specialFormType
     ) {
