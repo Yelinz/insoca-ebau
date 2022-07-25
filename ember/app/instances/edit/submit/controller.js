@@ -8,6 +8,8 @@ import Ember from "ember";
 import { task } from "ember-concurrency-decorators";
 import { all } from "rsvp";
 
+const nfdInstanceStateId = 7;
+
 export default class InstancesEditSubmitController extends Controller {
   @service ajax;
   @service questionStore;
@@ -36,6 +38,13 @@ export default class InstancesEditSubmitController extends Controller {
 
     if (!modules) {
       return false;
+    }
+
+    if (
+      parseInt(this.model.instance.instanceState.get("id")) ===
+      nfdInstanceStateId
+    ) {
+      return true;
     }
 
     const questions = (yield all(
