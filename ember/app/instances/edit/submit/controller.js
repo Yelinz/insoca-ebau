@@ -1,5 +1,5 @@
 import Controller, { inject as controller } from "@ember/controller";
-import { computed, action } from "@ember/object";
+import { computed, action, get } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import ENV from "citizen-portal/config/environment";
@@ -8,7 +8,7 @@ import Ember from "ember";
 import { task } from "ember-concurrency-decorators";
 import { all } from "rsvp";
 
-const nfdInstanceStateId = 7;
+const nfdInstanceState = "nfd";
 
 export default class InstancesEditSubmitController extends Controller {
   @service ajax;
@@ -40,10 +40,7 @@ export default class InstancesEditSubmitController extends Controller {
       return false;
     }
 
-    if (
-      parseInt(this.model.instance.instanceState.get("id")) ===
-      nfdInstanceStateId
-    ) {
+    if (get(this.model.instance.instanceState, "name") === nfdInstanceState) {
       return true;
     }
 
