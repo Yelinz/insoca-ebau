@@ -1,5 +1,5 @@
 import Controller, { inject as controller } from "@ember/controller";
-import { computed, action } from "@ember/object";
+import { computed, action, get } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import ENV from "citizen-portal/config/environment";
@@ -7,6 +7,8 @@ import computedTask from "citizen-portal/lib/computed-task";
 import Ember from "ember";
 import { task } from "ember-concurrency-decorators";
 import { all } from "rsvp";
+
+const nfdInstanceState = "nfd";
 
 export default class InstancesEditSubmitController extends Controller {
   @service ajax;
@@ -36,6 +38,10 @@ export default class InstancesEditSubmitController extends Controller {
 
     if (!modules) {
       return false;
+    }
+
+    if (get(this.model.instance.instanceState, "name") === nfdInstanceState) {
+      return true;
     }
 
     const questions = (yield all(

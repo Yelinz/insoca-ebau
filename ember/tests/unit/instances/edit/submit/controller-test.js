@@ -9,9 +9,11 @@ module("Unit | Controller | instances/edit/submit", function (hooks) {
 
   hooks.beforeEach(async function () {
     const form = this.server.create("form", { name: "test" });
+    const instanceState = this.server.create("instanceState", { name: "new" });
 
     this.instance = this.server.create("instance", {
       formId: form.id,
+      instanceState,
     });
 
     this.model = { instance: this.instance, meta: { editable: ["form"] } };
@@ -50,7 +52,7 @@ module("Unit | Controller | instances/edit/submit", function (hooks) {
   });
 
   test("it computes if the instance can be submitted", async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
 
     const editController = this.owner.lookup("controller:instances/edit");
     const controller = this.owner.lookup("controller:instances/edit/submit");
@@ -75,6 +77,22 @@ module("Unit | Controller | instances/edit/submit", function (hooks) {
     await q1.get("model").save();
     await q2.get("model").save();
     await q3.get("model").save();
+
+    await controller.get("canSubmit").perform();
+    assert.equal(controller.get("canSubmit.lastSuccessful.value"), true);
+
+    q1.set("model.value", "test");
+    q2.set("model.value", null);
+    q3.set("model.value", null);
+
+    await q1.get("model").save();
+    await q2.get("model").save();
+    await q3.get("model").save();
+
+    controller.model.instance.instanceState = this.server.create(
+      "instanceState",
+      { name: "nfd" }
+    );
 
     await controller.get("canSubmit").perform();
     assert.equal(controller.get("canSubmit.lastSuccessful.value"), true);
