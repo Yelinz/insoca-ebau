@@ -163,7 +163,7 @@ services:
       - POSTGRES_DATABASE=${APPLICATION}
       - KEYCLOAK_USER=admin
     volumes:
-      - ../keycloak:/etc/keycloak:ro
+            - ../keycloak:/etc/keycloak:ro
     networks:
       - ebau.local
     command:

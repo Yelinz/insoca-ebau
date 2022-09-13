@@ -30,6 +30,7 @@ start-dev-env:  ## Interactive initial setup of dev-environment
 
 .env:
 	touch .env
+	touch django/.env
 
 .PHONY: js-watch
 js-watch:

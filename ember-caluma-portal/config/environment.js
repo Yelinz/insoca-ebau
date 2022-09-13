@@ -190,6 +190,15 @@ module.exports = function (environment) {
         emailRegexp: "^e-mail$",
       },
     },
+    demo: {
+      name: "demo",
+      realm: "ebau",
+      answerSlugs: {},
+      supportGroups: [],
+      selectableGroups: {
+        roles: [],
+      },
+    },
   }[app];
 
   const oidcHost = process.env.KEYCLOAK_HOST || "http://ebau-keycloak.local";

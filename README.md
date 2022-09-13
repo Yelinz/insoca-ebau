@@ -130,7 +130,7 @@ In case you want to manually modify /etc/hosts following domains need to point t
 127.0.0.1 (localhost):
 
 ```
-ebau-portal.local ebau.local ebau-keycloak.local ebau-rest-portal.local
+ebau-portal.local ebau.local ebau-keycloak.local ebau-rest-portal.local ember-ebau.local
 ```
 
 For automatic checks during commit (formatting, linting) you can setup a git hook with the following commands:
@@ -142,7 +142,7 @@ pre-commit install
 
 After, you should be able to use to the following services:
 
-- [ember-ebau.local](http://ember-ebau.local) - new main application used for "internal" users
+- [ebau.local](http://ebau.local) - new main application used for "internal" users
 - [ebau-portal.local](http://ebau-portal.local) - public-facing portal (Caluma-based, default choice for new projects, used in Kt. BE, UR)
 - [ebau-rest-portal.local](http://ebau-rest-portal.local) - public-facing portal (REST-API-based, precursor of the Caluma-based portal, used in Kt. SZ)
 - [ebau.local/django-admin/](http://ebau.local/django-admin/) - Django admin interface
